@@ -1,0 +1,41 @@
+# Python Environment & Binaries (Crucial for your current leak)
+python.exe
+pythonw.exe
+*.dll
+*.pdb
+*.so
+*.pyd
+conda-meta/
+Library/
+Tools/
+DLLs/
+libs/
+Menu/
+include/
+etc/
+share/
+Lib/
+Scripts/
+
+# Python Build & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+build/
+dist/
+*.egg-info/
+
+# Project Specific Data (Private)
+.env
+raw_fund_data.pkl
+*.xlsx
+*.pkl
+*.html
+*.log
+
+# Editor Settings
+.vscode/
+.idea/
+.DS_Store
+.nonadmin
+LICENSE_PYTHON.txt
