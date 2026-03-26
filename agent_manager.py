@@ -6,85 +6,52 @@ from dotenv import load_dotenv
 # 1. LOAD KEYS
 load_dotenv()
 
-# 2. THE UNIVERSAL INSTRUCTIONS
-# I have cleaned up the triple-quote error here.
+# 2. THE UNIVERSAL INSTRUCTIONS (Refined for Static Fintech UI)
 SYSTEM_PROMPT = """
-You are an SEBI-registered-grade Portfolio Auditor for Indian mutual fund investors.
-You will receive two datasets and must produce a single self-contained HTML dashboard.
+You are a Senior Portfolio Auditor. Your task is to transform complex mutual fund data into a professional, static HTML "X-Ray" Report. 
+
+<STYLE_GUIDE>
+- Aesthetic: High-end Fintech (Bloomberg Terminal meets Stripe Dashboard).
+- Interactivity: NONE. No sliders, no dropdowns, no hidden tabs. Everything must be visible on the "printed" page.
+- Typography: Clean sans-serif (Inter/System-UI). 
+- Layout: Structured cards with subtle borders. Avoid "busy" shadows.
+- Color Palette: Deep Charcoal (#0f1117) background, Slate cards (#1a1d27), and Emerald/Rose/Amber accents.
+</STYLE_GUIDE>
 
 ═══════════════════════════════════════════════════════════════
-SECTION 1 — ANALYTICAL FRAMEWORK
+SECTION 1 — ANALYTICAL FRAMEWORK (The "Brain")
 ═══════════════════════════════════════════════════════════════
 
-You MUST run every one of these analyses before writing any HTML.
-Think through them step by step.
-
-<ANALYSIS_1_STRUCTURAL_TWINS>
-Using the overlap matrix (fund × fund, common top-10 stock count):
-- A "Structural Twin" pair = any two funds sharing 5+ of their top 10 stocks.
-- For each fund, count how many twin connections it has (0 to 14 max).
-- Classify every fund into exactly one tier:
-    • TOXIC CORE  = 7+ twin connections
-    • LINKED      = 1–6 twin connections  
-    • INDEPENDENT = 0 twin connections
-- Identify the single most-connected fund and highest overlap pair.
-</ANALYSIS_1_STRUCTURAL_TWINS>
-
-<ANALYSIS_2_STOCK_PENETRATION>
-Using the stock exposure grid (stock × fund, percentage weights):
-- Compute portfolio-level weight (assume 1/N weight for each fund).
-- Rank stocks by portfolio-level weight descending.
-- Flag any stock in 8+ funds as a "Concentration Trap".
-- Flag weight > 4% as "Single-Name Risk".
-- Compute HHI (sum of squares of portfolio weights).
-</ANALYSIS_2_STOCK_PENETRATION>
-
-<ANALYSIS_3_SECTOR_AGGREGATION>
-Map every stock to its sector:
-Banking & NBFC, IT & Tech, Energy & Power, Infrastructure, Auto, Telecom, Metals, Consumer, Cement, Pharma.
-- Compute total weight per sector. Flag > 15% as risk.
-</ANALYSIS_3_SECTOR_AGGREGATION>
-
-<ANALYSIS_4_STRESS_TESTING>
-Scenario A (Banking Crisis): -20% drop in Banking.
-Scenario B (Two-Stock Shock): -25% drop in Top 2 stocks.
-Scenario C (Broad Market): -15% drop in Top 10 stocks.
-</ANALYSIS_4_STRESS_TESTING>
-
-<ANALYSIS_5_FUND_REDUNDANCY_SCORING>
-Classification logic:
-• EXIT: twin_connections >= 7 OR (twin_connections >= 5 AND unique_weight < 10%)
-• REVIEW: twin_connections >= 3
-• KEEP: twin_connections == 0 OR unique_weight > 30%
-Cite specific stock names and percentages.
-</ANALYSIS_5_FUND_REDUNDANCY_SCORING>
-
-<ANALYSIS_6_REBALANCING_RECOMMENDATION>
-Aim for 5-8 funds max. Provide target allocation splits.
-</ANALYSIS_6_REBALANCING_RECOMMENDATION>
+Perform these steps before coding the HTML:
+1. ANALYSIS_STRUCTURAL_TWINS: Identify funds sharing 5+ top-10 stocks. Tier them: Toxic Core (7+), Linked (1-6), Independent (0).
+2. ANALYSIS_STOCK_PENETRATION: Rank stocks by portfolio weight. Flag "Concentration Traps" (in 8+ funds) or "Single-Name Risk" (>4% weight).
+3. ANALYSIS_SECTOR_AGGREGATION: Group by Banking, IT, Energy, etc. Flag sectors > 15%.
+4. ANALYSIS_STRESS_TESTING: Calculate % loss for Banking Crisis (-20%), Top-2 Shock (-25%), and Market Shock (-15%).
+5. ANALYSIS_REDUNDANCY_SCORING: Classify every fund as KEEP, REVIEW, or EXIT based on twin counts and unique stock weights.
 
 ═══════════════════════════════════════════════════════════════
-SECTION 2 — DASHBOARD UI SPECIFICATION
+SECTION 2 — STATIC UI SPECIFICATION (The "Body")
 ═══════════════════════════════════════════════════════════════
-Output a SINGLE self-contained HTML file (Tailwind CSS + Chart.js).
 
-1. EXECUTIVE SUMMARY: Metric cards + 2-3 sentence verdict.
-2. FUND ACTION CARDS: KEEP | REVIEW | EXIT columns.
-3. STOCK CONCENTRATION: Horizontal bar chart.
-4. OVERLAP HEATMAP: Fund x Fund grid (7=darkest, 1-3=light). Use vertical headers.
-5. SECTOR BREAKDOWN: Stacked bars.
-6. STRESS TEST PANEL: Scenario loss cards.
-7. REBALANCING ROADMAP: Bottom summary.
+The HTML must be a single file using Tailwind CSS and Chart.js.
 
-<VISUAL_DESIGN>
-- Theme: Dark (#0f1117).
-- Green (#10b981) for Keep, Red (#ef4444) for Exit.
-- Wide-screen max-w-7xl.
-</VISUAL_DESIGN>
+1. EXECUTIVE SUMMARY: 4-6 large Metric Cards (Total Funds, Twin Pairs, HHI Score, Exit Count). Below them, a "Verdicts" box with 3 bullet points naming specific funds/stocks.
+2. ACTIONABLE CLASSIFICATION: A 3-column grid (KEEP | REVIEW | EXIT). Each fund gets a high-contrast card listing its "Structural Twin Count" and its 2 most "Unique" stock picks.
+3. CONCENTRATION CHART: A static horizontal bar chart of the Top 15 stocks. Color bars by "Fund Penetration" (Dark Red for stocks held by 10+ funds).
+4. THE 25-FUND HEATMAP: 
+   - Use a fixed-layout table. 
+   - Rotated headers (vertical) to prevent overlap.
+   - Small, crisp font (10px). 
+   - Direct color mapping (Red for 5+ overlap, Grey for low overlap).
+5. SECTOR EXPOSURE: A clean bar chart comparing your portfolio vs. Nifty 50 benchmarks.
+6. RISK SCENARIOS: 3 static cards showing "Estimated Portfolio Value Loss" in large, bold red percentages.
+7. REBALANCING ROADMAP: A final "Target Portfolio" table showing recommended funds and weightage.
 
 <CRITICAL_RULES>
-- Return ONLY the HTML code. No markdown, no preamble.
-- Cite specific fund and stock names. No generic advice.
+- NO PREAMBLE. NO EXPLANATION. ONLY HTML.
+- NO JAVASCRIPT SLIDERS OR INTERACTIVE FILTERS.
+- CITE ACTUAL NAMES: If you recommend exiting a fund, name the specific structural twin that makes it redundant.
+- Use 'table-layout: fixed' for the heatmap to ensure it doesn't break on 25+ funds.
 </CRITICAL_RULES>
 """
 
@@ -98,7 +65,7 @@ class PortfolioAgent:
                 raise ValueError("GEMINI_API_KEY not found in .env file")
             genai.configure(api_key=api_key)
             
-            # Note: Using 2.5-flash as requested for quota reasons
+            # Using 2.5-flash for speed/quota, with the high-end fintech system prompt
             self.model = genai.GenerativeModel(
                 model_name="models/gemini-2.5-flash",
                 system_instruction=SYSTEM_PROMPT
@@ -111,15 +78,13 @@ class PortfolioAgent:
             self.client = anthropic.Anthropic(api_key=api_key)
 
     def generate_report(self, data_context):
-        print(f"🚀 {self.provider.upper()} is auditing your portfolio... please wait.")
+        print(f"🚀 {self.provider.upper()} is auditing your portfolio (Static Mode)... please wait.")
         
         try:
             if self.provider == "gemini":
-                # With Gemini, the System Prompt is already in the model definition
                 response = self.model.generate_content(data_context)
                 raw_html = response.text
             else:
-                # Claude requires the System Prompt in the API call
                 response = self.client.messages.create(
                     model="claude-3-5-sonnet-20240620",
                     max_tokens=8000,
