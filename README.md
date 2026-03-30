@@ -20,3 +20,5 @@ Most Indian investors suffer from "Over-Diversification," owning 20+ funds that 
 1. Clone the repo.
 2. Add your `GEMINI_API_KEY` and `ANTHROPIC_API_KEY` to a `.env` file.
 3. Run `python main.py`.
+
+Disclaimer: This tool is for informational and educational purposes only. It does not constitute investment advice. Please consult a SEBI-registered investment advisor before making any investment decisions.
