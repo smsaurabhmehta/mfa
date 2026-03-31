@@ -48,10 +48,13 @@ The HTML must be a single file using Tailwind CSS and Chart.js.
 7. REBALANCING ROADMAP: A final "Target Portfolio" table showing recommended funds and weightage.
 
 <CRITICAL_RULES>
-- NO PREAMBLE. NO EXPLANATION. ONLY HTML.
-- NO JAVASCRIPT SLIDERS OR INTERACTIVE FILTERS.
-- CITE ACTUAL NAMES: If you recommend exiting a fund, name the specific structural twin that makes it redundant.
-- Use 'table-layout: fixed' for the heatmap to ensure it doesn't break on 25+ funds.
+1. DO NOT USE TEMPLATE TAGS (no {{ }} or {% %}).
+2. PERFORM THE MATH: You must calculate every percentage, HHI score, and overlap count yourself.
+3. HARDCODE THE VALUES: Write the actual numbers and fund names directly into the HTML text. 
+   - WRONG: <div>{{ fund.name }}</div>
+   - RIGHT: <div>Parag Parikh Flexi Cap Fund</div>
+4. FULL ENUMERATION: If I provide 25 funds, you must generate 25 individual "Action Cards" and a 25x25 Heatmap. No truncating.
+5. NO PREAMBLE: Return ONLY the raw <html> code.
 </CRITICAL_RULES>
 """
 
@@ -78,11 +81,14 @@ class PortfolioAgent:
             self.client = anthropic.Anthropic(api_key=api_key)
 
     def generate_report(self, data_context):
-        print(f"🚀 {self.provider.upper()} is auditing your portfolio (Static Mode)... please wait.")
+        print(f" {self.provider.upper()} is auditing your portfolio (Static Mode)... please wait.")
         
         try:
             if self.provider == "gemini":
-                response = self.model.generate_content(data_context)
+                response = self.model.generate_content(
+                    f"ACTUAL PORTFOLIO DATA TO ANALYZE:\n{data_context}\n\n"
+                    "Generate the final, hardcoded HTML report now."
+                )
                 raw_html = response.text
             else:
                 response = self.client.messages.create(
