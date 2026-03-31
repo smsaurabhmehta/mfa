@@ -4,19 +4,20 @@
 # Format: "Fund Name": ["Direct_ISIN", "Regular_ISIN"]
 
 FUNDS_TO_TRACK = {
-    "Parag Parikh Flexi Cap Fund": ["INF879O01027", "INF879O01019"],
-    "HDFC Flexi Cap Fund": ["INF179K01UT0", "INF179K01608"],
-    "Kotak Flexicap Fund": ["INF174K01LS2", "INF174K01336"],
-    "SBI Focused Fund": ["INF200K01RJ1", "INF200K01370"],
-    "Aditya Birla Sun Life Flexi Cap Fund": ["INF209K01XX1", "INF209K01AJ8"],
-    "ICICI Prudential Flexicap Fund": ["INF109KC1R14", "INF109KC1Q80"],
-    "ICICI Prudential Focused Equity Fund": ["INF109K018N2", "INF109K01BZ4"],
-    "Aditya Birla Sun Life Focused Fund": ["INF209K01WE3", "INF209K01462"],
-    "Kotak Focused Fund": ["INF174KA1EN7", "INF174KA1EK3"],
-    "Tata Flexi Cap Fund": ["INF277K015K0", "INF277K019K2"],
-    "Edelweiss Flexi Cap Fund": ["INF843K01KK1", "INF843K01KN5"],
-    "ICICI Prudential Large Cap Fund": ["INF109K016L0", "INF109K01BL4"],
-    "DSP Nifty 50 Equal Weight Index Fund": ["INF740KA1CR7", "INF740KA1CO4"],
-    "Nippon India Multi Cap Fund": ["INF204K01XF9", "INF204K01489"],
-    "Kotak Multicap Fund": ["INF174KA1HV3", "INF174KA1HS9"]
+    "Motilal Oswal Large and Midcap Fund": ["INF247L01999", ""],
+    "Invesco India Large & Mid Cap Fund": ["INF205K01MA0", ""],
+    "Invesco India Smallcap Fund": ["INF205K013T3", ""],
+    "Bandhan Small Cap Fund": ["INF194KB1AL4", ""],
+    "Parag Parikh Flexi Cap Fund": ["INF879O01027", ""],
+    "ICICI Prudential Pharma Healthcare & Diagnostics (P.H.D) Fund": ["INF109KC1GH2", ""],
+    "HDFC Focused Fund": ["INF179K01VK7", ""],
+    "Kotak Midcap Fund": ["INF174K01LT0", ""],
+    "Motilal Oswal Flexi Cap Fund": ["INF247L01502", ""],
+    "Motilal Oswal Small Cap Fund": ["INF247L01BY3", ""],
+    "Edelweiss Mid Cap Fund": ["INF843K01AO4", ""],
+    "Nippon India Growth Fund (Mid Cap)": ["INF204K01E54", ""],
+    "Invesco India Focused Fund": ["INF205KA1213", ""],
+    "JM Midcap Fund": ["INF192K01MV6", ""],
+    "Kotak Large Cap Fund (Bluechip)": ["INF174K01KW6", ""],
+    "ICICI Prudential Nifty Next 50 Index Fund": ["INF109K01Y80", ""]
 }

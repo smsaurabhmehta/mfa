@@ -4,21 +4,22 @@ import time
 
 # 1. Your list of fund names
 funds = [
+    "Motilal Oswal Large and Midcap Fund",
+    "Invesco India Large & Mid Cap Fund",
+    "Invesco India Smallcap Fund",
+    "Bandhan Small Cap Fund",
     "Parag Parikh Flexi Cap Fund",
-    "HDFC Flexi Cap Fund",
-    "Kotak Flexicap Fund",
-    "SBI Focused Fund",
-    "Aditya Birla Sun Life Flexi Cap Fund",
-    "ICICI Prudential Flexicap Fund",
-    "ICICI Prudential Focused Equity Fund",
-    "Aditya Birla Sun Life Focused Fund",
-    "Kotak Focused Fund",
-    "Tata Flexi Cap Fund",
-    "Edelweiss Flexi Cap Fund",
-    "ICICI Prudential Large Cap Fund",
-    "DSP Nifty 50 Equal Weight Index Fund",
-    "Nippon India Multi Cap Fund",
-    "Kotak Multicap Fund"
+    "ICICI Prudential Pharma Healthcare & Diagnostics (P.H.D) Fund",
+    "HDFC Focused Fund",
+    "Kotak Midcap Fund",
+    "Motilal Oswal Flexi Cap Fund",
+    "Motilal Oswal Small Cap Fund",
+    "Edelweiss Mid Cap Fund",
+    "Nippon India Growth Mid Cap Fund",
+    "Invesco India Focused Fund",
+    "JM Midcap Fund",
+    "Kotak Large Cap Fund",
+    "ICICI Prudential Nifty Next 50 Index Fund"
 ]
 
 results = []
